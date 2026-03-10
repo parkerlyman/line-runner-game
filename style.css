@@ -26,6 +26,7 @@ canvas {
   box-shadow: 0 0 40px rgba(0, 200, 255, 0.3);
 }
 
+/* --- Overlays --- */
 .overlay {
   position: absolute;
   top: 0;
@@ -36,9 +37,10 @@ canvas {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(10, 10, 30, 0.85);
+  background: rgba(10, 10, 30, 0.88);
   border-radius: 8px;
   color: #fff;
+  gap: 4px;
 }
 
 .overlay.hidden {
@@ -46,36 +48,233 @@ canvas {
 }
 
 .overlay h1 {
-  font-size: 48px;
-  margin-bottom: 12px;
+  font-size: 44px;
+  margin-bottom: 8px;
   color: #00d4ff;
   text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
 
+.overlay h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #00d4ff;
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.overlay h3 {
+  font-size: 16px;
+  color: #888;
+  margin: 8px 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
 .overlay p {
-  font-size: 18px;
+  font-size: 16px;
   color: #aaa;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .overlay .controls {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 24px;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 16px;
+  font-family: monospace;
+}
+
+/* --- Buttons --- */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 button {
-  padding: 14px 40px;
-  font-size: 18px;
+  padding: 12px 32px;
+  font-size: 16px;
   border: 2px solid #00d4ff;
   background: transparent;
   color: #00d4ff;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: inherit;
 }
 
 button:hover {
   background: #00d4ff;
   color: #1a1a2e;
+}
+
+button.secondary {
+  border-color: #444;
+  color: #888;
+}
+
+button.secondary:hover {
+  background: #444;
+  color: #fff;
+}
+
+button.danger {
+  border-color: #ff4757;
+  color: #ff4757;
+  margin-top: 8px;
+}
+
+button.danger:hover {
+  background: #ff4757;
+  color: #fff;
+}
+
+/* --- Game Over Stats --- */
+.stats-row {
+  display: flex;
+  gap: 30px;
+  margin: 10px 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-val {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: monospace;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.gold {
+  color: #ffd700 !important;
+}
+
+/* --- NEW BEST animation --- */
+.new-best {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  animation: newBestPulse 0.8s ease-in-out infinite alternate;
+  margin-bottom: 6px;
+}
+
+.new-best.hidden {
+  display: none;
+}
+
+@keyframes newBestPulse {
+  from {
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  }
+  to {
+    transform: scale(1.15);
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* --- Leaderboard --- */
+#leaderboard-list {
+  list-style: none;
+  width: 280px;
+  max-height: 120px;
+  overflow-y: auto;
+  margin: 0 auto 8px;
+  padding: 0;
+}
+
+#leaderboard-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 8px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #aaa;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#leaderboard-list li:first-child {
+  color: #ffd700;
+}
+
+.lb-rank {
+  width: 30px;
+  color: #555;
+}
+
+.lb-score {
+  flex: 1;
+  text-align: right;
+  font-weight: bold;
+  color: inherit;
+}
+
+.lb-detail {
+  width: 60px;
+  text-align: right;
+  color: #555;
+}
+
+/* --- Tutorial --- */
+.tutorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0;
+  width: 420px;
+}
+
+.tutorial-item {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(0, 212, 255, 0.03);
+}
+
+.tutorial-key {
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00d4ff;
+  margin-bottom: 4px;
+}
+
+.tutorial-desc {
+  font-size: 12px;
+  color: #888;
+}
+
+.tutorial-coins {
+  font-size: 14px;
+  color: #888;
+  margin: 8px 0;
+}
+
+/* --- Settings --- */
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #aaa;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.setting-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #00d4ff;
 }

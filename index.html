@@ -9,19 +9,77 @@
 <body>
   <div id="game-container">
     <canvas id="gameCanvas"></canvas>
+
+    <!-- Start Screen -->
     <div id="start-screen" class="overlay">
       <h1>Line Runner</h1>
-      <p>Jump over obstacles to survive!</p>
-      <p class="controls">Space / Tap to jump</p>
-      <button id="start-btn">Start Game</button>
+      <p>Jump, dodge, and survive!</p>
+      <p class="controls">Space/Up = Jump &nbsp; Down = Duck &nbsp; Esc = Pause</p>
+      <div class="btn-group">
+        <button id="start-btn">Start Game</button>
+        <button id="settings-btn" class="secondary">Settings</button>
+      </div>
     </div>
+
+    <!-- Tutorial (shown on first play) -->
+    <div id="tutorial-screen" class="overlay hidden">
+      <h2>How to Play</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-item">
+          <div class="tutorial-key">SPACE / UP</div>
+          <div class="tutorial-desc">Jump over ground obstacles</div>
+        </div>
+        <div class="tutorial-item">
+          <div class="tutorial-key">SPACE x2</div>
+          <div class="tutorial-desc">Double jump for extra height</div>
+        </div>
+        <div class="tutorial-item">
+          <div class="tutorial-key">DOWN</div>
+          <div class="tutorial-desc">Duck under aerial obstacles</div>
+        </div>
+        <div class="tutorial-item">
+          <div class="tutorial-key">CLOSE DODGE</div>
+          <div class="tutorial-desc">Barely miss obstacles for combo multiplier!</div>
+        </div>
+      </div>
+      <p class="tutorial-coins">Collect <span class="gold">coins</span> for bonus points!</p>
+      <button id="tutorial-ok-btn">Got it!</button>
+    </div>
+
+    <!-- Pause Screen -->
+    <div id="pause-screen" class="overlay hidden">
+      <h1>Paused</h1>
+      <div class="btn-group">
+        <button id="resume-btn">Resume</button>
+        <button id="quit-btn" class="secondary">Quit to Menu</button>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
     <div id="game-over-screen" class="overlay hidden">
       <h1>Game Over</h1>
-      <p>Score: <span id="final-score">0</span></p>
-      <p>Best: <span id="best-score">0</span></p>
-      <button id="restart-btn">Play Again</button>
+      <div id="new-best" class="new-best hidden">NEW BEST!</div>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-val" id="final-score">0</span><span class="stat-label">Score</span></div>
+        <div class="stat"><span class="stat-val" id="final-distance">0</span><span class="stat-label">Distance</span></div>
+        <div class="stat"><span class="stat-val gold" id="final-coins">0</span><span class="stat-label">Coins</span></div>
+      </div>
+      <h3>Leaderboard</h3>
+      <ol id="leaderboard-list"></ol>
+      <div class="btn-group">
+        <button id="restart-btn">Play Again</button>
+        <button id="menu-btn" class="secondary">Menu</button>
+      </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div id="settings-screen" class="overlay hidden">
+      <h2>Settings</h2>
+      <label class="setting-row"><input type="checkbox" id="sound-toggle" checked> Sound Effects & Music</label>
+      <button id="reset-scores-btn" class="danger">Reset All Scores</button>
+      <button id="settings-back-btn" class="secondary">Back</button>
     </div>
   </div>
-  <script src="game.js"></script>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
